@@ -62,15 +62,16 @@ export default function FormContactTerminal() {
           <TypingText text={state.errors.message} delay={20} />
         )}
       </div>
-
-      {/* <div className="p-4 border border-green-500 rounded bg-green-900/20">
-                      <div className="text-green-400 mb-2">
-                        <TypingText text="¡Mensaje enviado correctamente!" delay={20} />
-                      </div>
-                      <p className="text-green-300">
-                        Gracias por contactarme. Responderé a tu mensaje lo antes posible.
-                      </p>
-                    </div> */}
+      {state.success && (
+        <div className="p-4 border border-green-500 rounded bg-green-900/20">
+          <div className="text-green-400 mb-2">
+            <TypingText text="¡Mensaje enviado correctamente!" delay={20} />
+          </div>
+          <p className="text-green-300">
+            Gracias por contactarme. Responderé a tu mensaje lo antes posible.
+          </p>
+        </div>
+      )}
 
       <button
         type="submit"
