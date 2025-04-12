@@ -28,6 +28,9 @@ export default function FormContactTerminal() {
           name="name"
           className="w-full bg-black border border-green-500 rounded p-2 text-green-400 focus:outline-none focus:ring-1 focus:ring-green-500"
         />
+        {state.errors.name && (
+          <TypingText text={state.errors.name} delay={20} />
+        )}
       </div>
 
       <div>
@@ -40,6 +43,9 @@ export default function FormContactTerminal() {
           name="email"
           className="w-full bg-black border border-green-500 rounded p-2 text-green-400 focus:outline-none focus:ring-1 focus:ring-green-500"
         />
+        {state.errors.email && (
+          <TypingText text={state.errors.email} delay={20} />
+        )}
       </div>
 
       <div>
@@ -52,13 +58,10 @@ export default function FormContactTerminal() {
           rows={6}
           className="w-full bg-black border border-green-500 rounded p-2 text-green-400 focus:outline-none focus:ring-1 focus:ring-green-500 resize-none"
         />
+        {state.errors.message && (
+          <TypingText text={state.errors.message} delay={20} />
+        )}
       </div>
-
-      {state.errors.message && (
-        <div className="text-red-500 text-sm">
-          Error: {state.errors.message}
-        </div>
-      )}
 
       {/* <div className="p-4 border border-green-500 rounded bg-green-900/20">
                       <div className="text-green-400 mb-2">
