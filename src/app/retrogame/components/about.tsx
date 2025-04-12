@@ -76,38 +76,33 @@ const About = () => {
         <div className="order-1 lg:order-2">
           <div className="space-y-6 text-lg">
             <p>
-              Soy un desarrollador fullstack{" "}
-              <span className="text-yellow-400">autodidacta</span> con una
-              pasión por crear experiencias digitales únicas que combinan
-              funcionalidad y nostalgia.
+              Soy un desarrollador full-stack{" "}
+              <span className="text-yellow-400">autodidacta</span>, apasionado
+              por crear experiencias digitales que combinan funcionalidad y
+              nostalgia.
             </p>
 
             <p>
-              Mi viaje comenzó hace 5 años cuando decidí aprender a programar
-              por mi cuenta. Lo que empezó como un hobby recreando juegos
-              clásicos se convirtió en una carrera profesional desarrollando
-              aplicaciones web modernas.
+              Comencé hace 5 años recreando juegos clásicos y hoy me especializo
+              en <span className="text-yellow-400">React</span> para el
+              frontend, <span className="text-green-400">Django</span> para el
+              backend, y <span className="text-blue-400">Phaser.js</span> para
+              juegos interactivos.
             </p>
 
             <p>
-              Me especializo en <span className="text-yellow-400">React</span>{" "}
-              para el frontend, <span className="text-green-400">Django</span>{" "}
-              para el backend y <span className="text-blue-400">Phaser.js</span>{" "}
-              para el desarrollo de juegos. Esta combinación me permite crear
-              desde aplicaciones empresariales hasta juegos interactivos.
+              Creo que los videojuegos clásicos enseñan mucho sobre diseño y
+              experiencia de usuario, principios que aplico en cada proyecto.
             </p>
 
             <p>
-              Creo firmemente que los videojuegos clásicos tienen mucho que
-              enseñarnos sobre diseño de interfaces, experiencia de usuario y
-              resolución de problemas. Por eso, incorporo estos principios en
-              todos mis proyectos.
+              Me esfuerzo por crear soluciones elegantes y funcionales,
+              siguiendo las mejores prácticas de desarrollo y diseño.
             </p>
 
             <p>
-              Cuando no estoy programando, probablemente me encontrarás jugando
-              a algún RPG clásico, explorando nuevas tecnologías o contribuyendo
-              a proyectos de código abierto.
+              Fuera del código, disfruto jugando RPGs, explorando nuevas
+              tecnologías y colaborando en código abierto.
             </p>
           </div>
         </div>
