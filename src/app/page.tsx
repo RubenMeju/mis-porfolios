@@ -9,6 +9,7 @@ import {
   Shield,
 } from "lucide-react";
 import Link from "next/link";
+import { TypingText } from "./terminal-vintage/components/typing-text";
 
 export default function IndexPage() {
   return (
@@ -82,49 +83,64 @@ export default function IndexPage() {
             <div className="h-full flex flex-col">
               <div className="flex items-center gap-2 mb-6">
                 <Terminal className="w-6 h-6 text-green-500" />
-                <span className="terminal-text text-sm">SYSTEM.TERMINAL</span>
+
+                <div className="terminal-text text-sm text-white">
+                  <TypingText text="SYSTEM.TERMINAL" delay={20} />
+                </div>
               </div>
 
               <div className="flex-1 terminal-text text-sm font-mono overflow-y-auto">
-                <div className="mb-4">
+                <div className="mb-4 text-white">
                   <span className="text-green-700">root@system</span>
                   <span className="text-green-500">:~$ </span>
-                  <span>initialize_system</span>
+                  <TypingText text="initialize_system" delay={20} />
                 </div>
-
-                {[
-                  "Loading kernel modules...",
-                  "Checking system integrity...",
-                  "Mounting virtual filesystems...",
-                  "Starting network services...",
-                  "Initializing security protocols...",
-                  "System ready.",
-                ].map((line, index) => (
-                  <div key={index} className="mb-2 opacity-80">
-                    {line}
+                <div className="space-y-2 text-amber-500">
+                  <div>
+                    <TypingText text="Loading kernel modules..." delay={20} />
                   </div>
-                ))}
+                  <div>
+                    <TypingText
+                      text="Mounting virtual filesystems..."
+                      delay={20}
+                    />
+                  </div>
+                  <div>
+                    <TypingText
+                      text="Starting network services..."
+                      delay={20}
+                    />
+                  </div>
+                  <div>
+                    <TypingText
+                      text="Initializing security protocols..."
+                      delay={20}
+                    />
+                  </div>
+                  <div>
+                    <TypingText text="Loading user interface..." delay={20} />
+                  </div>
+                  <div>
+                    <TypingText text="System ready." delay={20} />
+                  </div>
+                </div>
 
                 <div className="mt-4">
                   <span className="text-green-700">root@system</span>
                   <span className="text-green-500">:~$ </span>
-                  <span className="cursor">_</span>
+                  <span className="cursor text-white">_</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4 mt-auto pt-4">
-                {[
-                  { icon: Code2, text: "EXECUTE" },
-                  { icon: Cpu, text: "PROCESS" },
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-2 border border-green-500/30 p-3 hover:bg-green-500/10 transition-all cursor-pointer"
-                  >
-                    <item.icon className="w-5 h-5 text-green-500" />
-                    <span className="terminal-text text-sm">{item.text}</span>
-                  </div>
-                ))}
+                <div className="text-white flex terminal-text text-sm items-center gap-2 border border-green-500/30 p-3 hover:bg-green-500/10 transition-all cursor-pointer">
+                  <Code2 className="w-5 h-5 text-green-500" />
+                  <TypingText text="EXECUTE" delay={20} />
+                </div>
+                <div className="flex text-white terminal-text text-sm items-center gap-2 border border-green-500/30 p-3 hover:bg-green-500/10 transition-all cursor-pointer">
+                  <Cpu className="w-5 h-5 text-green-500" />
+                  <TypingText text="PROCESS" delay={20} />
+                </div>
               </div>
             </div>
           </div>
