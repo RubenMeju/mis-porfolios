@@ -1,86 +1,9 @@
-"use client";
-
 import type React from "react";
 
-import { useState } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
+import FormContact from "./FormContact";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<null | "success" | "error">(
-    null
-  );
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-
-    // Clear error when user types
-    if (errors[name as keyof typeof errors]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
-  };
-
-  const validateForm = () => {
-    let isValid = true;
-    const newErrors = { name: "", email: "", message: "" };
-
-    if (!formData.name.trim()) {
-      newErrors.name = "El nombre es obligatorio";
-      isValid = false;
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = "El email es obligatorio";
-      isValid = false;
-    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-      newErrors.email = "Email inválido";
-      isValid = false;
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = "El mensaje es obligatorio";
-      isValid = false;
-    }
-
-    setErrors(newErrors);
-    return isValid;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!validateForm()) return;
-
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-
-      // Reset status after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus(null);
-      }, 5000);
-    }, 1500);
-  };
-
   const socialLinks = [
     {
       name: "GitHub",
@@ -117,90 +40,7 @@ const Contact = () => {
           <h3 className="text-2xl font-bold mb-6 text-yellow-400">
             Envíame un mensaje
           </h3>
-
-          {submitStatus === "success" && (
-            <div className="mb-6 p-4 bg-green-500/20 border border-green-500 rounded-md text-green-300">
-              ¡Mensaje enviado con éxito! Me pondré en contacto contigo pronto.
-            </div>
-          )}
-
-          {submitStatus === "error" && (
-            <div className="mb-6 p-4 bg-red-500/20 border border-red-500 rounded-md text-red-300">
-              Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block mb-2 font-medium">
-                Nombre
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className={`w-full p-3 bg-indigo-800/50 border ${
-                  errors.name ? "border-red-500" : "border-indigo-700"
-                } rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500`}
-                placeholder="Tu nombre"
-              />
-              {errors.name && (
-                <p className="mt-1 text-red-400 text-sm">{errors.name}</p>
-              )}
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block mb-2 font-medium">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className={`w-full p-3 bg-indigo-800/50 border ${
-                  errors.email ? "border-red-500" : "border-indigo-700"
-                } rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500`}
-                placeholder="tu@email.com"
-              />
-              {errors.email && (
-                <p className="mt-1 text-red-400 text-sm">{errors.email}</p>
-              )}
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block mb-2 font-medium">
-                Mensaje
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={5}
-                className={`w-full p-3 bg-indigo-800/50 border ${
-                  errors.message ? "border-red-500" : "border-indigo-700"
-                } rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500`}
-                placeholder="Cuéntame sobre tu proyecto..."
-              ></textarea>
-              {errors.message && (
-                <p className="mt-1 text-red-400 text-sm">{errors.message}</p>
-              )}
-            </div>
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`px-8 py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-md transition-all duration-300 transform hover:scale-105 w-full ${
-                isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-              }`}
-            >
-              {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
-            </button>
-          </form>
+          <FormContact />
         </div>
 
         <div>
