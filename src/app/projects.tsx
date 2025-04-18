@@ -57,7 +57,7 @@ export const projects: Project[] = [
     title: "Buscador de Películas",
     description:
       "Aplicación para buscar y guardar información sobre películas usando una API pública.",
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/images-projects/tetris.webp",
     technologies: ["React", "Django", "REST API"],
     category: "aplicaciones",
     github: "#",
