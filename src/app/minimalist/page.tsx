@@ -16,7 +16,7 @@ export default function HomePage() {
   return (
     <div className="w-full h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-700">
       <ClientOnly>
-        <Canvas shadows dpr={[1, 2]} camera={{ position: [5, 5, 5], fov: 50 }}>
+        <Canvas shadows dpr={[1, 2]} camera={{ position: [-5, 4, 8], fov: 50 }}>
           <Suspense fallback={<Html center>Loading...</Html>}>
             <Environment preset="sunset" />
             <ambientLight intensity={0.7} />
