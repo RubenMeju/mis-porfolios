@@ -1,25 +1,34 @@
 import { useEffect, useState } from "react";
 
-// Hook personalizado para escuchar las teclas presionadas
+// Hook personalizado para escuchar teclas presionadas
 export const useKeyboard = () => {
   const [keys, setKeys] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
-    const down = (e: KeyboardEvent) =>
-      setKeys((p) => ({ ...p, [e.key.toLowerCase()]: true }));
-    const up = (e: KeyboardEvent) =>
-      setKeys((p) => ({ ...p, [e.key.toLowerCase()]: false }));
+    const down = (e: KeyboardEvent) => {
+      const key = normalizeKey(e.key);
+      setKeys((prev) => ({ ...prev, [key]: true }));
+    };
 
-    // Agregar listeners para eventos de teclas
+    const up = (e: KeyboardEvent) => {
+      const key = normalizeKey(e.key);
+      setKeys((prev) => ({ ...prev, [key]: false }));
+    };
+
     window.addEventListener("keydown", down);
     window.addEventListener("keyup", up);
 
     return () => {
-      // Limpiar los listeners cuando el componente se desmonte
       window.removeEventListener("keydown", down);
       window.removeEventListener("keyup", up);
     };
   }, []);
 
-  return keys; // Devuelve el estado de las teclas
+  return keys;
+};
+
+// Normaliza la tecla para evitar problemas con caracteres especiales
+const normalizeKey = (key: string) => {
+  if (key === " ") return "space";
+  return key.toLowerCase();
 };

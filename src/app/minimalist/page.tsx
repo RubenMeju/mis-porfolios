@@ -1,11 +1,12 @@
 "use client";
 import React, { Suspense, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Environment } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import MarioModel, { MarioModelHandle } from "./components/MarioModel";
 import { GameMap } from "./components/GameMap";
 import CameraController from "./components/CamaraController";
+import Suelo from "./components/Suelo";
 
 export default function Page() {
   const marioRef = useRef<MarioModelHandle>(null);
@@ -23,14 +24,17 @@ export default function Page() {
 
           <Environment files="/hdr/NightSky.exr" background />
 
-          <GameMap />
+          <Suelo />
+
           <MarioModel ref={marioRef} />
 
           <CameraController
             targetRef={marioRef}
-            offset={[0, 5, -10]} // <- aquí el Z negativo
+            offset={[0, 5, -25]} // <- aquí el Z negativo
             lerpFactor={0.1}
           />
+
+          <OrbitControls />
         </Canvas>
       </Suspense>
     </div>
