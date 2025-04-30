@@ -1,8 +1,8 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
-import { TextMyName } from "./TextMyName";
 import { Nave } from "./Nave";
 import { Stars } from "./Stars";
+import Planet from "./Planet";
 
 export default function Scene() {
   return (
@@ -13,11 +13,10 @@ export default function Scene() {
     >
       <ambientLight intensity={0.05} color="#ffffff" />
 
-      {/* <Environment preset="sunset" background={false} /> */}
       <Stars />
-      <TextMyName />
       <Suspense fallback={null}>
         <Nave />
+        <Planet />
       </Suspense>
     </Canvas>
   );
