@@ -11,49 +11,39 @@ export const Nave = () => {
   const { viewport, scene } = useThree();
   const tmp = new THREE.Vector3();
 
-  // Detecta si es móvil
   const isMobile = viewport.width < 6;
+  const initialPosition: [number, number, number] = isMobile
+    ? [0, -1.5, 3.1]
+    : [-1, -1, 4];
 
-  // Para pantallas grandes, mueve la nave más abajo
-  const initialPosition = isMobile ? [0, -1.5, 3.1] : [-1, -1, 4]; // Modificar el valor Y aquí
-
-  // Estado para controlar el movimiento del ratón
   const [lastMouseMove, setLastMouseMove] = useState(Date.now());
-  const [mousePos, setMousePos] = useState([0, 0]);
+  const [searchPosX, setSearchPosX] = useState(0);
 
-  // Limites de movimiento de la nave (a la derecha e izquierda)
-  const moveLimits = { left: -1.2, right: 1.2 };
-  const moveSpeed = 0.05; // Velocidad del movimiento aleatorio
-
-  // Posición de la nave en el movimiento de "búsqueda"
-  const [searchPosX, setSearchPosX] = useState(0); // Coordenada X de búsqueda
-
-  // Ref para controlar el movimiento aleatorio
   const randomMoveRef = useRef({ direction: 1 });
 
   useEffect(() => {
     if (lightRef.current) {
       lightRef.current.target = targetObj.current;
     }
+    const currentTarget = targetObj.current;
 
     scene.add(targetObj.current);
 
     return () => {
-      scene.remove(targetObj.current);
+      if (currentTarget) {
+        scene.remove(currentTarget);
+      }
     };
   }, [scene]);
 
   useEffect(() => {
-    // Controlamos que la nave se mueva aleatoriamente después de 1 segundo sin movimiento del ratón
     const interval = setInterval(() => {
       const now = Date.now();
       if (now - lastMouseMove > 1000) {
-        // Movimiento aleatorio
         setSearchPosX((prev) => {
-          const nextPos = prev + randomMoveRef.current.direction * moveSpeed;
-          // Si alcanza el límite izquierdo o derecho, cambia de dirección
-          if (nextPos >= moveLimits.right || nextPos <= moveLimits.left) {
-            randomMoveRef.current.direction *= -1; // Cambiar dirección
+          const nextPos = prev + randomMoveRef.current.direction * 0.05;
+          if (nextPos >= 1.2 || nextPos <= -1.2) {
+            randomMoveRef.current.direction *= -1;
           }
           return nextPos;
         });
@@ -67,10 +57,8 @@ export const Nave = () => {
     const now = Date.now();
 
     if (now - lastMouseMove > 1000) {
-      // Si no se mueve el ratón, la nave se mueve hacia la izquierda o derecha de manera continua
       tmp.set(searchPosX, 0, 0);
     } else {
-      // Si el ratón se mueve, la nave sigue al ratón
       tmp.set(
         (state.mouse.x * viewport.width) / 2,
         (state.mouse.y * viewport.height) / 2,
@@ -78,27 +66,19 @@ export const Nave = () => {
       );
     }
 
-    // Verificación para asegurar que tmp no tenga valores NaN
     if (isNaN(tmp.x) || isNaN(tmp.y) || isNaN(tmp.z)) {
       tmp.set(0, 0, 0);
     }
 
-    const time = state.clock.getElapsedTime();
-    spaceshipRef.current.position.y += Math.sin(time) * 0.005;
-
-    if (spaceshipRef.current.position) {
-      spaceshipRef.current.lookAt(tmp);
-    }
-
+    spaceshipRef.current.position.y +=
+      Math.sin(state.clock.getElapsedTime()) * 0.005;
+    spaceshipRef.current.lookAt(tmp);
     targetObj.current.position.lerp(tmp, 0.1);
     targetObj.current.updateMatrixWorld();
   });
 
-  const handleMouseMove = (e: MouseEvent) => {
-    // Actualiza la última vez que el ratón se movió
+  const handleMouseMove = () => {
     setLastMouseMove(Date.now());
-    // Actualiza la posición del ratón
-    setMousePos([e.clientX, e.clientY]);
   };
 
   useEffect(() => {
@@ -111,7 +91,6 @@ export const Nave = () => {
   return (
     <group ref={spaceshipRef} position={initialPosition}>
       <MySpaceShip />
-
       <SpotLight
         ref={lightRef}
         castShadow
@@ -123,7 +102,6 @@ export const Nave = () => {
         radiusTop={0.01}
         intensity={2}
       />
-
       <pointLight intensity={0.2} position={[0, 0, -0.3]} color="#f7c767" />
       <Sphere position={[0, 0.05, -0.45]} args={[0.01, 32, 32]}>
         <meshStandardMaterial color="#f7c767" />
