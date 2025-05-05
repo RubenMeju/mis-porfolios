@@ -56,6 +56,7 @@ export default function Projects() {
                 <div className="flex justify-between">
                   <a
                     href={project.github}
+                    target="_blank"
                     className="text-white hover:text-blue-400 flex items-center gap-1"
                   >
                     <Github size={18} />
@@ -63,6 +64,7 @@ export default function Projects() {
                   </a>
                   <a
                     href={project.demo}
+                    target="_blank"
                     className="text-white hover:text-blue-400 flex items-center gap-1"
                   >
                     <ExternalLink size={18} />
