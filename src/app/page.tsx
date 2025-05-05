@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { TypingText } from "./terminal-vintage/components/typing-text";
+import Scene from "./portfolio-three-js/components/canvas/Scene";
+import { Card3D } from "./components/card_3d";
 
 export default function IndexPage() {
   return (
@@ -145,6 +147,9 @@ export default function IndexPage() {
             </div>
           </div>
         </Link>
+
+        {/* Portfolio three js  */}
+        <Card3D />
       </div>
     </div>
   );

@@ -3,39 +3,45 @@ import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
-export default function MySpaceShip() {
+interface MySpaceShipProps {
+  scale?: [number, number, number];
+  rotate?: boolean; // nuevo prop opcional para rotación
+}
+
+export default function MySpaceShip({
+  scale = [0.01, 0.01, 0.01],
+  rotate = false, // valor por defecto: no rota
+}: MySpaceShipProps) {
   const { scene, animations } = useGLTF("/models/mi_space_ship.glb");
 
-  // Definir la referencia de mixerRef como AnimationMixer de Three.js
-  const mixerRef = useRef<THREE.AnimationMixer | null>(null); // Tipado explícito para la referencia
-  const clock = useRef(new THREE.Clock()); // Reloj para manejar el tiempo de las animaciones
+  const mixerRef = useRef<THREE.AnimationMixer | null>(null);
+  const clock = useRef(new THREE.Clock());
+  const sceneRef = useRef<THREE.Group>(scene); // para acceder a la escena y rotarla
 
   useEffect(() => {
-    // Crear el AnimationMixer para manejar las animaciones
     if (scene) {
       mixerRef.current = new THREE.AnimationMixer(scene);
-
-      // Agregar las animaciones del modelo al AnimationMixer
       animations.forEach((clip) => {
-        mixerRef.current?.clipAction(clip).play(); // Reproducir cada animación
+        mixerRef.current?.clipAction(clip).play();
       });
     }
 
-    // Asegúrate de limpiar el mixer cuando el componente se desmonte
     return () => {
-      mixerRef.current?.stopAllAction(); // Detener las animaciones cuando el componente se desmonte
+      mixerRef.current?.stopAllAction();
     };
   }, [animations, scene]);
 
-  // En cada frame actualizamos el mixer para reproducir las animaciones
   useFrame(() => {
     if (mixerRef.current) {
-      mixerRef.current.update(clock.current.getDelta()); // Actualizar el mixer con el tiempo transcurrido
+      mixerRef.current.update(clock.current.getDelta());
+    }
+
+    if (rotate && sceneRef.current) {
+      sceneRef.current.rotation.y += 0.01; // rota suavemente sobre el eje Y
     }
   });
 
-  // Escala el modelo
-  scene.scale.set(0.01, 0.01, 0.01); // Escala el modelo a la mitad de su tamaño original
+  scene.scale.set(...scale);
 
-  return <primitive object={scene} />;
+  return <primitive object={scene} ref={sceneRef} />;
 }
