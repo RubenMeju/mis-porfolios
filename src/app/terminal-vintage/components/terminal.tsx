@@ -37,7 +37,7 @@ export function Terminal() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 min-h-screen flex flex-col">
+    <div className="container mx-auto px-4 py-8 min-h-screen flex flex-col overflow-hidden">
       {!bootSequenceComplete ? (
         <BootSequence onComplete={() => setBootSequenceComplete(true)} />
       ) : (

@@ -50,10 +50,12 @@ const About = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className="order-2 lg:order-1">
           <div className="bg-indigo-900/50 p-8 rounded-lg border-2 border-indigo-800">
-            <h3 className="text-2xl font-bold mb-6 text-yellow-400">
+            <h3 className="text-2xl font-bold mb-2 text-yellow-400">
               Mis Habilidades
             </h3>
-
+            <h4 className="text-sm font-bold mb-6 text-white">
+              Siempre aprendiendo
+            </h4>
             <div className="space-y-6">
               {levels.map((tech) => (
                 <div key={tech.name}>
