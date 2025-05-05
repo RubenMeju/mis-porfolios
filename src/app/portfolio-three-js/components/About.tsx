@@ -12,12 +12,12 @@ const skills = [
   {
     name: "Backend",
     icon: <Server className="h-6 w-6" />,
-    items: ["Node.js", "Express", "Python", "Django", "GraphQL"],
+    items: ["Python", "Django", "GraphQL", "Node.js", "Express"],
   },
   {
     name: "Bases de Datos",
     icon: <Database className="h-6 w-6" />,
-    items: ["MongoDB", "PostgreSQL", "MySQL", "Firebase", "Redis"],
+    items: ["PostgreSQL", "MySQL", "MongoDB", "Firebase", "Redis"],
   },
   {
     name: "DevOps",
@@ -30,9 +30,9 @@ const skills = [
     items: ["JavaScript", "TypeScript", "Python", "C", "C++"],
   },
   {
-    name: "Diseño",
+    name: "Lenguajes",
     icon: <Palette className="h-6 w-6" />,
-    items: ["Figma", "Adobe XD", "Photoshop", "Illustrator", "UI/UX"],
+    items: ["JavaScript", "TypeScript", "Python", "C", "C++"],
   },
 ];
 
