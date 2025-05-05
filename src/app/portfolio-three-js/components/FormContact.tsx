@@ -27,11 +27,18 @@ export const FormContact = () => {
           id="name"
           name="name"
           required
-          className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+          className={`w-full px-4 py-3 bg-gray-800 border ${
+            state.errors.name ? "border-red-500" : "border-gray-700"
+          } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
           placeholder="Tu nombre"
         />
+        {/* Mostrar errores */}
+        {state.errors.name && (
+          <p className="mt-1 text-red-400 text-sm">{state.errors.name}</p>
+        )}
       </div>
 
+      {/* Campo Email */}
       <div>
         <label
           htmlFor="email"
@@ -44,11 +51,18 @@ export const FormContact = () => {
           id="email"
           name="email"
           required
-          className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+          className={`w-full px-4 py-3 bg-gray-800 border ${
+            state.errors.email ? "border-red-500" : "border-gray-700"
+          } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
           placeholder="tu@email.com"
         />
+        {/* Mostrar errores */}
+        {state.errors.email && (
+          <p className="mt-1 text-red-400 text-sm">{state.errors.email}</p>
+        )}
       </div>
 
+      {/* Campo Mensaje */}
       <div>
         <label
           htmlFor="message"
@@ -61,11 +75,16 @@ export const FormContact = () => {
           name="message"
           required
           rows={5}
-          className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white resize-none"
+          className={`w-full px-4 py-3 bg-gray-800 border ${
+            state.errors.message ? "border-red-500" : "border-gray-700"
+          } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white resize-none`}
           placeholder="Cuéntame sobre tu proyecto..."
         />
+        {/* Mostrar errores */}
+        {state.errors.message && (
+          <p className="mt-1 text-red-400 text-sm">{state.errors.message}</p>
+        )}
       </div>
-
       <button
         type="submit"
         disabled={isPending}
