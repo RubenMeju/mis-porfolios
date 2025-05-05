@@ -56,7 +56,7 @@ export function Terminal() {
 
                   {/* Tooltip */}
                   <span className="absolute left-full ml-3 top-1/2 -translate-y-1/2 scale-0 group-hover:scale-100 transition-all bg-black text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap z-10">
-                    Salir del portfolio
+                    Ir al menú
                   </span>
                 </Link>
 

@@ -47,7 +47,7 @@ const Navbar = () => {
             className="text-2xl font-bold text-yellow-400 hover:text-yellow-300 transition-colors duration-300 flex items-center"
           >
             <span className="inline-block w-6 h-6 mr-2 bg-yellow-400 rounded-sm"></span>
-            Salir
+            MENU
           </Link>
 
           {/* Desktop Navigation */}
