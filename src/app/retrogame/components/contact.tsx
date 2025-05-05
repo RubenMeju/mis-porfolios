@@ -13,7 +13,7 @@ const Contact = () => {
     {
       name: "LinkedIn",
       icon: <Linkedin className="h-6 w-6" />,
-      url: "https://linkedin.com/in/username",
+      url: "https://www.linkedin.com/in/ruben-yanez-m/",
     },
     {
       name: "Email",

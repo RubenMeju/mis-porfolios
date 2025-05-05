@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
 import { FormContact } from "./FormContact";
+import Link from "next/link";
 
 export default function Contact() {
   return (
@@ -51,12 +52,14 @@ export default function Contact() {
 
             <div className="flex items-start gap-4">
               <div className="bg-blue-500/20 p-3 rounded-full">
-                <Phone className="h-6 w-6 text-blue-400" />
+                <Linkedin className="h-6 w-6 text-blue-400" />
               </div>
-              <div>
-                <h4 className="text-lg font-semibold text-white">Teléfono</h4>
-                <p className="text-gray-400">+34 123 456 789</p>
-              </div>
+
+              <Link href="https://www.linkedin.com/in/ruben-yanez-m/">
+                <h4 className="text-lg font-semibold text-white">LinkedIn</h4>
+
+                <p className="text-gray-400">linkedin.com/Rubén-Yañéz/</p>
+              </Link>
             </div>
 
             <div className="flex items-start gap-4">

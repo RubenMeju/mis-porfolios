@@ -33,11 +33,11 @@ export function Contact() {
               className="flex items-center gap-2 text-green-400 hover:text-green-300"
             >
               <Mail size={18} />
-              <span>contacto@ejemplo.com</span>
+              <span>rubenmeju@outlook.es</span>
             </a>
 
             <a
-              href="https://github.com/usuario"
+              href="https://github.com/RubenMeju"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-green-400 hover:text-green-300"
@@ -47,7 +47,7 @@ export function Contact() {
             </a>
 
             <a
-              href="https://linkedin.com/in/usuario"
+              href="https://www.linkedin.com/in/ruben-yanez-m/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-green-400 hover:text-green-300"
