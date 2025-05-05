@@ -40,7 +40,10 @@ export default function Contact() {
               Información de Contacto
             </h3>
 
-            <div className="flex items-start gap-4">
+            <Link
+              href="mailto:rubenmeju@outlook"
+              className="flex items-start gap-4 "
+            >
               <div className="bg-blue-500/20 p-3 rounded-full">
                 <Mail className="h-6 w-6 text-blue-400" />
               </div>
@@ -48,7 +51,7 @@ export default function Contact() {
                 <h4 className="text-lg font-semibold text-white">Email</h4>
                 <p className="text-gray-400">rubenmeju@outlook.es</p>
               </div>
-            </div>
+            </Link>
 
             <div className="flex items-start gap-4">
               <div className="bg-blue-500/20 p-3 rounded-full">
