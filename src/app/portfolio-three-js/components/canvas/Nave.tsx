@@ -14,7 +14,7 @@ export const Nave = () => {
   const isMobile = viewport.width < 6;
   const initialPosition: [number, number, number] = isMobile
     ? [0, -1.5, 3.1]
-    : [-1, -1, 4];
+    : [-1.5, 0, 4];
 
   const [lastMouseMove, setLastMouseMove] = useState(Date.now());
   const [searchPosX, setSearchPosX] = useState(0);
@@ -95,7 +95,7 @@ export const Nave = () => {
         ref={lightRef}
         castShadow
         position={[0, -0.08, 0]}
-        distance={5}
+        distance={4}
         angle={0.4}
         attenuation={5}
         anglePower={5}

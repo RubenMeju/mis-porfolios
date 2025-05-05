@@ -64,21 +64,21 @@ export default function About() {
           >
             <h3 className="text-2xl font-bold text-white">Mi Historia</h3>
             <p className="text-gray-400">
-              Soy un desarrollador apasionado por crear experiencias digitales
-              excepcionales. Con más de 5 años de experiencia en el desarrollo
-              web, he trabajado en diversos proyectos que van desde aplicaciones
-              empresariales hasta sitios web creativos.
+              Me gusta crear interfaces visualmente atractivas, intuitivas y
+              fluidas. Trabajo con React, priorizando experiencias limpias,
+              rápidas y accesibles. Creo que los detalles visuales marcan la
+              diferencia en la experiencia del usuario.
             </p>
             <p className="text-gray-400">
-              Mi enfoque se centra en combinar código limpio y eficiente con
-              diseños atractivos para crear productos que no solo funcionen
-              bien, sino que también proporcionen una excelente experiencia de
-              usuario.
+              Aprendí a programar motivado por la curiosidad y el deseo de
+              crear. Me interesa explorar nuevas formas de presentar contenido y
+              dar vida a ideas interactivas en la web.
             </p>
             <p className="text-gray-400">
-              Constantemente estoy aprendiendo nuevas tecnologías y metodologías
-              para mantenerme al día con las últimas tendencias en desarrollo
-              web y ofrecer las mejores soluciones a mis clientes.
+              Busco combinar diseño, código y visión en cada proyecto. Sigo
+              aprendiendo sobre UX, diseño de interfaces y tendencias modernas.
+              También disfruto desarrollar proyectos personales y compartir lo
+              que aprendo.
             </p>
           </motion.div>
 
