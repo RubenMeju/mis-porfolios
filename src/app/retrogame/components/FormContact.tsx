@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { sendEmail } from "./actions"; // asegúrate que el path sea correcto
+import { sendEmail } from "./actions";
 import { ContactFormState } from "../types";
 
 const initialState: ContactFormState = {

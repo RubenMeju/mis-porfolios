@@ -13,8 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rubén Yáñez | Portfolio",
+  title: "Rubén Yáñez | Portfolios",
   description: "Portfolio of Rubén Yáñez",
+  icons: {
+    icon: "/MyFavicon.ico",
+  },
 };
 
 export default function RootLayout({

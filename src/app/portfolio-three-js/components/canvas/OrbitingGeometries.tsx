@@ -38,14 +38,14 @@ export default function OrbitingGeometries({
       return {
         geometry,
         color,
-        position: [x, y, z],
+        position: [x, y, z], // Un array de números
         speed,
         offset: Math.random() * Math.PI * 2,
       };
     });
   }, [count, radius, scale]);
 
-  const meshRefs = useRef([]);
+  const meshRefs = useRef<(THREE.Mesh | null)[]>([]);
 
   // Animación de órbita
   useFrame(({ clock }) => {
@@ -75,7 +75,8 @@ export default function OrbitingGeometries({
         <mesh
           key={i}
           ref={(el) => (meshRefs.current[i] = el)}
-          position={props.position}
+          // Convertimos el array de posiciones en un objeto THREE.Vector3
+          position={new THREE.Vector3(...props.position)}
           geometry={props.geometry}
         >
           <meshStandardMaterial

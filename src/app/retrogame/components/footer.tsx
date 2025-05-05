@@ -1,11 +1,11 @@
-"use client"; // Solo si estás usando Next.js App Router (opcional en Pages Router)
+"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const [opacities, setOpacities] = useState([]);
+  const [opacities, setOpacities] = useState<string[]>([]);
 
   useEffect(() => {
     // Generar opacidades aleatorias solo en cliente

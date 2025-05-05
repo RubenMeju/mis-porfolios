@@ -5,7 +5,7 @@ import { useFrame } from "@react-three/fiber";
 
 interface MySpaceShipProps {
   scale?: [number, number, number];
-  rotate?: boolean; // nuevo prop opcional para rotación
+  rotate?: boolean;
 }
 
 export default function MySpaceShip({
@@ -37,7 +37,7 @@ export default function MySpaceShip({
     }
 
     if (rotate && sceneRef.current) {
-      sceneRef.current.rotation.y += 0.01; // rota suavemente sobre el eje Y
+      sceneRef.current.rotation.y += 0.01;
     }
   });
 
